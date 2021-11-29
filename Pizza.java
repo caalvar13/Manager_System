@@ -15,12 +15,8 @@ public class Pizza
   //------------------------
 
   List<String> ingredients = new ArrayList<String>(){};
-  static List<String> toppinngs = new ArrayList<String>(){
-    add("pepperoni");
-    add("cheese");
-    add("tomatoe");
-    add("pineapple");
-    add("mushrooms");
+  String[] toppinngs = {
+    "pepperoni","cheese", "tomatoe", "pineapple", "mushrooms"
   };
 
   //Pizza Associations
@@ -58,5 +54,23 @@ public class Pizza
   public Pizza(String topping)
   {
     ingredients.add(topping);
+  }
+
+  //------------------------
+  // INTERFACE
+  //------------------------
+  /* Code from template association_GetOne */
+  
+  
+   
+  private void addIngredients(String ingredient){
+    ingredients.add(ingredient);
+  }
+
+  private void removeIngredients(String ingredient){
+    if(!ingredients.isEmpty() && ingredient.contains(ingredient))
+      ingredients.remove(new String(ingredient));
+    else 
+      System.out.print("No ingredient found to remove");
   }
 }

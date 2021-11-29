@@ -16,7 +16,6 @@ public class Employee
   protected String name;
   protected double salary;
   protected double hoursWorked;
-  protected boolean isManager;
 
   //------------------------
   // CONSTRUCTOR
@@ -49,5 +48,11 @@ public class Employee
   {
     return salary;
   }
+  
+  public String toString() {
+      return "name string: " + this.name + " salary double: " + this.salary + " hours worked double: " + this.ho;
+  }
+  
+  
   
 }

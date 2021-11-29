@@ -14,7 +14,6 @@ public class Store
   //------------------------
 
   //Store Attributes
-  private String state;
   private String city;
   private String zipCode;
   private String workHours;
@@ -26,7 +25,7 @@ public class Store
   private double cost;
 
   //Store Associations
-  
+  // private OrderManager orderManager;
 
   //------------------------
   // CONSTRUCTOR
@@ -34,7 +33,6 @@ public class Store
 
   public Store(String zipcode)
   {
-    state = "Texas";
     city = "El Paso";
     zipCode = zipcode;
     deliveryHours = "10-10";
@@ -46,17 +44,13 @@ public class Store
   //------------------------
   // INTERFACE
   //------------------------
+
   private void employees(){
     employees.add(new Manager("Juan", 14.5, 35));
     employees.add(new Driver("Gabe", 8.5, 34));
     employees.add(new Maintenance("John", 8.5, 33));
     employees.add(new Cook("Luis", 8.5, 32));
     employees.add(new Cashier("Johnny", 8.5, 32));
-  }
-
-  private List<Object> getEmployees()
-  {
-    return employees;
   }
 
   private void orders(){
@@ -67,7 +61,21 @@ public class Store
     orders.add(new Order("delivery", new Pizza(5), 10.50, true, "fast service"));
   }
   
+  public List<Object> getEmployees() {
+	  return this.employees; 
+	  
+  }
+  
+  public List<Order> getOrders() {
+	  return this.orders; 
+	  
+  }
 
+//  public String getStoreInfo() {
+//	  return this.city; 
+//	  
+//  }
+//  
   public void setCity(String aCity)
   {
     city = aCity;
@@ -76,6 +84,16 @@ public class Store
   public void setZipCode(String aZipCode)
   {
     zipCode = aZipCode;
+  }
+  /* Code from template attribute_SetMany */
+  public void addManagement(Manager aManagement)
+  {
+
+  }
+
+  public void removeManagement(Manager aManagement)
+  {
+    
   }
 
   public void setDeliveryHours(String aDeliveryHours)
@@ -88,11 +106,6 @@ public class Store
     deliveryRules = aDeliveryRules;
   }
 
-  public String getState()
-  {
-    return state;
-  }
-
   public String getCity()
   {
     return city;
@@ -102,6 +115,16 @@ public class Store
   {
     return zipCode;
   }
+  // /* Code from template attribute_GetMany */
+  // public Manager getManager(int index)
+  // {
+    
+  // }
+
+  // public Manager[] getManagement()
+  // {
+   
+  // }
 
   public String getDeliveryHours()
   {
@@ -112,6 +135,21 @@ public class Store
   {
     return deliveryRules;
   }
+  /* Code from template association_GetMany */
+  // public Employee getEmployee(int index)
+  // {
+
+  // }
+
+  // public List<Employee> getEmployees()
+  // {
+    
+  // }
+
+  // public int numberOfEmployees()
+  // {
+    
+  // }
 
   
   // /* Code from template association_GetOne */
@@ -125,13 +163,25 @@ public class Store
     
   // }
 
-  public List<Order> getOrders()
-  {
-    return orders;
-  }
+  // public List<Order> getOrders()
+  // {
+    
+  // }
+
+  
+  // /* Code from template association_AddManyToOne */
+  // public Employee addEmployee(String aName, double aSalary, Employee aEmployee)
+  // {
+    
+  // }
+
+  // public boolean removeEmployee(Employee aEmployee)
+  // {
+    
+  // }
 
   // line 12 "model.ump"
-   private double getCost(){
+   private double manageCost(){
      cost = 0;
      for(Object emp: employees){
        if(emp.getClass() == Manager.class){
@@ -155,7 +205,7 @@ public class Store
   }
 
   // line 15 "model.ump"
-  private double getRevenue(){
+  private double manageRevenue(){
     revenue = 0;
     for(Order order: orders){
       revenue += order.getCost();
