@@ -1,12 +1,12 @@
 import java.util.*;
 import java.util.Scanner;
-import OrderManager;
+// import OrderManager;
 
 
 public class controller {
 
     static List<Store> stores = new ArrayList<Store>();
-    static OrderManager aOrderManager;
+    //static OrderManager aOrderManager;
 
     
 

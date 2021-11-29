@@ -25,7 +25,7 @@ public class Store
   private double cost;
 
   //Store Associations
-  private OrderManager orderManager;
+  // private OrderManager orderManager;
 
   //------------------------
   // CONSTRUCTOR
@@ -100,16 +100,16 @@ public class Store
   {
     return zipCode;
   }
-  /* Code from template attribute_GetMany */
-  public Manager getManager(int index)
-  {
+  // /* Code from template attribute_GetMany */
+  // public Manager getManager(int index)
+  // {
     
-  }
+  // }
 
-  public Manager[] getManagement()
-  {
+  // public Manager[] getManagement()
+  // {
    
-  }
+  // }
 
   public String getDeliveryHours()
   {
@@ -121,49 +121,49 @@ public class Store
     return deliveryRules;
   }
   /* Code from template association_GetMany */
-  public Employee getEmployee(int index)
-  {
+  // public Employee getEmployee(int index)
+  // {
 
-  }
+  // }
 
-  public List<Employee> getEmployees()
-  {
+  // public List<Employee> getEmployees()
+  // {
     
-  }
+  // }
 
-  public int numberOfEmployees()
-  {
+  // public int numberOfEmployees()
+  // {
     
-  }
-
-  
-  /* Code from template association_GetOne */
-  public OrderManager getOrderManager()
-  {
-    
-  }
-  /* Code from template association_GetMany */
-  public Order getOrder(int index)
-  {
-    
-  }
-
-  public List<Order> getOrders()
-  {
-    
-  }
+  // }
 
   
-  /* Code from template association_AddManyToOne */
-  public Employee addEmployee(String aName, double aSalary, Employee aEmployee)
-  {
+  // /* Code from template association_GetOne */
+  // public OrderManager getOrderManager()
+  // {
     
-  }
+  // }
+  // /* Code from template association_GetMany */
+  // public Order getOrder(int index)
+  // {
+    
+  // }
 
-  public boolean removeEmployee(Employee aEmployee)
-  {
+  // public List<Order> getOrders()
+  // {
     
-  }
+  // }
+
+  
+  // /* Code from template association_AddManyToOne */
+  // public Employee addEmployee(String aName, double aSalary, Employee aEmployee)
+  // {
+    
+  // }
+
+  // public boolean removeEmployee(Employee aEmployee)
+  // {
+    
+  // }
 
   // line 12 "model.ump"
    private double manageCost(){

@@ -39,7 +39,7 @@ public class Order
   // INTERFACE
   //------------------------
 
-  public boolean setDelivery(String aDelivery)
+  public void setDelivery(String aDelivery)
   {
     delivery = aDelivery;
   }

@@ -16,6 +16,8 @@ public class Manager extends Employee
   // CONSTRUCTOR
   //------------------------
 
+
+
   public Manager(String aName, double aSalary, double aHoursWorked)
   {
     name = aName;
@@ -26,11 +28,6 @@ public class Manager extends Employee
   //------------------------
   // INTERFACE
   //------------------------
-
-  public void delete()
-  {
-    super.delete();
-  }
 
   // line 80 "model.ump"
    private void includeMenuItems(){

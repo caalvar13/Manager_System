@@ -17,10 +17,6 @@ public class Employee
   protected double salary;
   protected double hoursWorked;
 
-  //Employee Associations
-  private Store store;
-  private EmployeeManager employeeManager;
-
   //------------------------
   // CONSTRUCTOR
   //------------------------
