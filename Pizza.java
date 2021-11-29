@@ -60,39 +60,7 @@ public class Pizza
   // INTERFACE
   //------------------------
   /* Code from template association_GetOne */
-  public Order getOrder()
-  {
-    return order;
-  }
-  /* Code from template association_SetOneToMany */
-  public boolean setOrder(Order aOrder)
-  {
-    boolean wasSet = false;
-    if (aOrder == null)
-    {
-      return wasSet;
-    }
-
-    Order existingOrder = order;
-    order = aOrder;
-    if (existingOrder != null && !existingOrder.equals(aOrder))
-    {
-      existingOrder.removePizza(this);
-    }
-    order.addPizza(this);
-    wasSet = true;
-    return wasSet;
-  }
-
-  public void delete()
-  {
-    Order placeholderOrder = order;
-    this.order = null;
-    if(placeholderOrder != null)
-    {
-      placeholderOrder.removePizza(this);
-    }
-  }
+  
   
    
   private void addIngredients(String ingredient){
@@ -104,17 +72,5 @@ public class Pizza
       ingredients.remove(new String(ingredient));
     else 
       System.out.print("No ingredient found to remove");
-  }
-
-
-  public String toString()
-  {
-    return super.toString() + "["+
-            "pepperoni" + ":" + getPepperoni()+ "," +
-            "cheese" + ":" + getCheese()+ "," +
-            "tomatoe" + ":" + getTomatoe()+ "," +
-            "pineapple" + ":" + getPineapple()+ "," +
-            "mushrooms" + ":" + getMushrooms()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "order = "+(getOrder()!=null?Integer.toHexString(System.identityHashCode(getOrder())):"null");
   }
 }
