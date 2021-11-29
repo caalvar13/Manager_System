@@ -15,29 +15,24 @@ public class Order
 
   //Order Attributes
   private String delivery;
+  private double cost;
+  private boolean fb;
+  private String feedback;
 
   //Order Associations
-  private Store store;
   private List<Pizza> pizzas = new ArrayList<Pizza>();
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Order(String aDelivery, Store aStore, OrderManager aOrderManager)
+  public Order(String aDelivery, Pizza pizza, double aCost, double aFb, String aFeedback)
   {
     delivery = aDelivery;
-    boolean didAddStore = setStore(aStore);
-    if (!didAddStore)
-    {
-      throw new RuntimeException("Unable to create order due to store. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
-    boolean didAddOrderManager = setOrderManager(aOrderManager);
-    if (!didAddOrderManager)
-    {
-      throw new RuntimeException("Unable to create order due to orderManager. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
-    pizzas = new ArrayList<Pizza>();
+    pizzas.add(pizza);
+    cost = aCost;
+    fb = aFb;
+    feedback = aFeedback;
   }
 
   //------------------------
@@ -56,6 +51,12 @@ public class Order
   {
     return delivery;
   }
+
+  public double getCost()
+  {
+    return cost;
+  }
+
   /* Code from template association_GetOne */
   public Store getStore()
   {

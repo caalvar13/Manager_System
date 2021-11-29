@@ -15,6 +15,9 @@ public class Pizza
   //------------------------
 
   List<String> ingredients = new ArrayList<String>(){};
+  String[] toppinngs = {
+    "pepperoni","cheese", "tomatoe", "pineapple", "mushrooms"
+  };
 
   //Pizza Associations
   private Order order;
@@ -23,13 +26,35 @@ public class Pizza
   // CONSTRUCTOR
   //------------------------
 
-  public Pizza()
+  public Pizza(int t)
   {
-    ingredients.add("pepperoni");
-    ingredients.add("cheese");
-    ingredients.add("tomatoe");
-    ingredients.add("pineapple");
-    ingredients.add("mushrooms");
+    if(t == toppinngs.length){
+      ingredients.addAll(Arrays.asList(toppinngs));
+
+    }else{
+      Random rand = new Random();
+      List<Integer> l = new ArrayList<Integer>();
+      int n = rand.nextInt(5);
+      for (int i = 0; i< t;i++){
+        if(!l.contains(n) || l.isEmpty()){
+          l.add(n);
+          ingredients.add(toppinngs[n]);
+        }
+        n = rand.nextInt(5);
+      }
+    }
+  }
+
+  public Pizza(String[] toppings)
+  {
+    for(String ingredient: toppings)
+      ingredients.add(ingredient);
+  }
+
+  public Pizza(String topping)
+  {
+    ingredients.add(topping);
+  }
 
   //------------------------
   // INTERFACE

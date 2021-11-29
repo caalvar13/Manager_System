@@ -20,13 +20,12 @@ public class Store
   private String deliveryHours;
   private String deliveryRules;
   private List<Object> employees = new ArrayList<Object>();
-  private List<Order> order = new ArrayList<Order>();
+  private List<Order> orders = new ArrayList<Order>();
   private double revenue;
   private double cost;
 
   //Store Associations
   private OrderManager orderManager;
-  private List<Order> orders;
 
   //------------------------
   // CONSTRUCTOR
@@ -39,12 +38,7 @@ public class Store
     deliveryHours = "10-10";
     deliveryRules = "No more than 5 mile radius";
     employees();
-    boolean didAddOrderManager = setOrderManager(aOrderManager);
-    if (!didAddOrderManager)
-    {
-      throw new RuntimeException("Unable to create store due to orderManager. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
-    orders = new ArrayList<Order>();
+    orders();
   }
 
   //------------------------
@@ -57,6 +51,14 @@ public class Store
     employees.add(new Maintenance("John", 8.5, 33));
     employees.add(new Cook("Luis", 8.5, 32));
     employees.add(new Cashier("Johnny", 8.5, 32));
+  }
+
+  private void orders(){
+    orders.add(new Order("delivery", new Pizza(3), 6.50, true, "good service"));
+    orders.add(new Order("delivery", new Pizza(2), 4.50, false, ""));
+    orders.add(new Order("delivery", new Pizza(4), 8.50, true, "service is great!"));
+    orders.add(new Order("delivery", new Pizza(1), 2.50, false, ""));
+    orders.add(new Order("delivery", new Pizza(5), 10.50, true, "fast service"));
   }
 
   public void setCity(String aCity)
@@ -388,18 +390,37 @@ public class Store
   }
 
   // line 12 "model.ump"
-   private void manageCost(){
+   private double manageCost(){
      cost = 0;
      for(Object emp: employees){
-        cost+= emp.hoursWorked * emp.salary;
+       if(emp.getClass() == Manager.class){
+         Manager employee = (Manager)emp;
+         cost+= employee.hoursWorked * employee.salary;
+       }else if(emp.getClass() == Cashier.class){
+        Cashier employee = (Cashier)emp;
+        cost+= employee.hoursWorked * employee.salary;
+       }else if(emp.getClass() == Cook.class){
+        Cook employee = (Cook)emp;
+        cost+= employee.hoursWorked * employee.salary;
+       }else if(emp.getClass() == Maintenance.class){
+        Maintenance employee = (Maintenance)emp;
+        cost+= employee.hoursWorked * employee.salary;
+       }else if(emp.getClass() == Driver.class){
+        Driver employee = (Driver)emp;
+        cost+= employee.hoursWorked * employee.salary;
+       }
      }
-    
+    return cost;
   }
 
   // line 15 "model.ump"
-   private void manageRevenue(){
-    
-  }
+  private double manageRevenue(){
+    revenue = 0;
+    for(Order order: orders){
+      revenue += order.getCost();
+    }
+   return revenue;
+ }
 
   // line 18 "model.ump"
    private void prepareOrder(){
