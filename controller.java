@@ -1,12 +1,12 @@
 // import OrderManager;
 import java.util.*;
 
-
 public class controller {
 
     static List<Store> stores = new ArrayList<Store>();
-    static List<Manager> managers = new ArrayList<Manager>();
     //static OrderManager aOrderManager;
+
+    
     private String city;
     private String zipCode;
     private List<Manager> management;
@@ -14,93 +14,82 @@ public class controller {
     private String deliveryRules;
 
     public static void main(String[] args) {
-
-        Scanner credentials = new Scanner(System.in);
-
-        createStores();
-        getManagers();
-
+    	String str = "";
+    	boolean exit = false;
+        List<Store> stores = createStores();
+        List<Object> employeesData = stores.get(0).getEmployees();
+        List<Order> orders = stores.get(0).getOrders();
+//        System.out.println(Arrays.toString(employeesData.toArray()));
         System.out.println("Please enter credentials to access Manager page");
-        System.out.print("Enter your username: ");
+        Scanner credentials = new Scanner(System.in);
+        System.out.println("Enter your username.");
         String username = credentials.nextLine();
-        System.out.print("Enter your password: ");
+        System.out.println("Enter your password.");
         String password1 = credentials.nextLine();
-
-        boolean wrong = true;
-        Manager manager;
-        while(wrong){
-            for(Manager mg: managers){
-                if(username.equalsIgnoreCase(manager.getUsername()) && password1.equals(manager.getPassword())){
-                    System.out.println("Login Successful! Welcome " + mg.name);
-                    wrong = false;
-                    manager = mg;
-                    break;
-                }
-            }
-            if(wrong){
-                System.out.println("Wrong credentials. Try again");
-                System.out.print("Enter your username: ");
-                username = credentials.nextLine();
-                System.out.print("Enter your password: ");
-                password1 = credentials.nextLine();
-            }
+        System.out.println(username);
+        System.out.println(password1);
+        if(username.equalsIgnoreCase("juan") || password1.equalsIgnoreCase("manager")){
+        	System.out.println("Login Successful, what can I do for you, today.");
+	  }
+	  else {
+		  System.out.println("Wrong Password, terminated.");
+		  try {
+		  credentials.close();
+		  }
+		  catch(IllegalStateException e) {
+			  System.out.println("Wrong Password, terminated.");
+		  }
+//		  break;
+	  }
+//        credentials.close();
+//        List<Object> employeesData = stores.get(0).getEmployees();
+//        System.out.println(employeesData);
+//        	String input1 = users.next:ine()
+        	while (exit == false){
+        		System.out.println();
+        		System.out.println("Type exit to finish otherwise continue with other commands");
+        		System.out.println("Type employees to see all employees");
+        		System.out.println("Type orders to see all orders");
+        		System.out.println("Type store to see info of this store.");
+        		
+        		str = credentials.nextLine();
+//        	        	boolean exit = false;
+//        	        	Scanner keyboard = new Scanner(System.in);
+        	     if(str.equalsIgnoreCase("exit") || str.equalsIgnoreCase("e")){
+        	       exit = true; 
+        	       System.out.println("System exited");
+        	     }
+//        		Scanner users = new Scanner(System.in);
+        		
+        		if(str.equalsIgnoreCase("employees")){
+        			System.out.println(employeesData);
+        		}
+        		if(str.equalsIgnoreCase("orders")){
+        			System.out.println(orders);
+        		}
+        		if(str.equalsIgnoreCase("store")){
+        			System.out.println("City Located: "+stores.get(0).getCity());
+        			System.out.println("zip code: "+stores.get(0).getZipCode());
+        			System.out.println("Delivery Rules: "+stores.get(0).getDeliveryRules());
+        			System.out.println("Hours of operation: "+stores.get(0).getDeliveryHours());
+        			
+        			
+        		}
+//        		if(users.nextLine().equals("exit")) {
+//        			break;
+//        		}
+        	}
         }
+//        else {
+//        	System.out.println("Wrong Password, terminated.");
+//        }
+//    }
 
-
-
-        while(true){
-            System.out.println("Select action by typing number");
-            System.out.println("(1) See all employees");
-            System.out.println("(2) Ssee all orders");
-            System.out.println("(3) See store revenue");
-            System.out.println("(4) See store cost");
-
-            str = credentials.nextLine();
-        //        	        	boolean exit = false;
-        //        	        	Scanner keyboard = new Scanner(System.in);
-            if(str.equalsIgnoreCase("exit") || str.equalsIgnoreCase("e")){
-            exit = true; 
-            System.out.println("System exited");
-            }
-        //        		Scanner users = new Scanner(System.in);
-
-            if(str.equalsIgnoreCase("employees")){
-                System.out.println(employeesData);
-            }
-            if(str.equalsIgnoreCase("orders")){
-                System.out.println(orders);
-            }
-            if(str.equalsIgnoreCase("store")){
-                System.out.println("City Located: "+stores.get(0).getCity());
-                System.out.println("zip code: "+stores.get(0).getZipCode());
-                System.out.println("Delivery Rules: "+stores.get(0).getDeliveryRules());
-                System.out.println("Hours of operation: "+stores.get(0).getDeliveryHours());
-
-
-            }
-        //        		if(users.nextLine().equals("exit")) {
-        //        			break;
-        //        		}
-        }
-        }
-        //        else {
-        //        	System.out.println("Wrong Password, terminated.");
-        //        }
-        //    }
-        
-        
-    }
-
-    public static void createStores(){
+    public static List<Store> createStores(){
         stores.add(new Store("79936"));
         stores.add(new Store("79935"));
         stores.add(new Store("79912"));
-    }
-
-    public static void getManagers(){
-        for(Store store: stores){
-            managers.addAll(store.getManagers());
-        }
+        return stores;
     }
     
 }

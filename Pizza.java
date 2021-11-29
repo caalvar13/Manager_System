@@ -15,13 +15,8 @@ public class Pizza
   //------------------------
 
   List<String> ingredients = new ArrayList<String>(){};
-  static List<String> toppinngs = new ArrayList<String>(){{
-      add("pepperoni");
-      add("cheese");
-      add("tomatoe");
-      add("pineapple");
-      add("mushrooms");
-  }
+  String[] toppinngs = {
+    "pepperoni","cheese", "tomatoe", "pineapple", "mushrooms"
   };
 
   //Pizza Associations
@@ -33,8 +28,8 @@ public class Pizza
 
   public Pizza(int t)
   {
-    if(t == toppinngs.size()){
-      ingredients.addAll(toppinngs);
+    if(t == toppinngs.length){
+      ingredients.addAll(Arrays.asList(toppinngs));
 
     }else{
       Random rand = new Random();
@@ -43,7 +38,7 @@ public class Pizza
       for (int i = 0; i< t;i++){
         if(!l.contains(n) || l.isEmpty()){
           l.add(n);
-          ingredients.add(toppinngs.get(n));
+          ingredients.add(toppinngs[n]);
         }
         n = rand.nextInt(5);
       }
@@ -59,5 +54,23 @@ public class Pizza
   public Pizza(String topping)
   {
     ingredients.add(topping);
+  }
+
+  //------------------------
+  // INTERFACE
+  //------------------------
+  /* Code from template association_GetOne */
+  
+  
+   
+  private void addIngredients(String ingredient){
+    ingredients.add(ingredient);
+  }
+
+  private void removeIngredients(String ingredient){
+    if(!ingredients.isEmpty() && ingredient.contains(ingredient))
+      ingredients.remove(new String(ingredient));
+    else 
+      System.out.print("No ingredient found to remove");
   }
 }

@@ -26,12 +26,12 @@ public class Order
   // CONSTRUCTOR
   //------------------------
 
-  public Order(String aDelivery, Pizza pizza, double aCost, boolean aFb, String aFeedback)
+  public Order(String aDelivery, Pizza pizza, double aCost, boolean b, String aFeedback)
   {
     delivery = aDelivery;
     pizzas.add(pizza);
     cost = aCost;
-    fb = aFb;
+    fb = b;
     feedback = aFeedback;
   }
 
@@ -49,14 +49,13 @@ public class Order
     return delivery;
   }
 
-  public void setCost(double aCost)
-  {
-    cost = aCost;
-  }
-
   public double getCost()
   {
     return cost;
+  }
+  
+  public String toString() {
+      return "New Order: "+ "delivery string: " + this.delivery + "\n" +" cost double: " + this.cost + "\n" +" fb boolean: " + this.fb + "\n" +" feedback message: " + this.feedback + "\n" +" pizza "+ this.pizzas+"\n"+ "\n" ;
   }
 
 }
