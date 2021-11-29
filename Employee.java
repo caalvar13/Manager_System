@@ -16,6 +16,7 @@ public class Employee
   protected String name;
   protected double salary;
   protected double hoursWorked;
+  protected boolean isManager;
 
   //------------------------
   // CONSTRUCTOR
