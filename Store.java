@@ -162,5 +162,14 @@ public class Store
     }
    return revenue;
  }
+
+ public List<Manager> getManagers(){
+  List<Manager> managers = new ArrayList<Manager>();
+  for(Object employee: employees){
+    if(employee.getClass() == Manager.class)
+      managers.add((Manager) employee);
+  }
+  return managers;
+}
   
 }

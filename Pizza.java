@@ -15,12 +15,13 @@ public class Pizza
   //------------------------
 
   List<String> ingredients = new ArrayList<String>(){};
-  static List<String> toppinngs = new ArrayList<String>(){
-    add("pepperoni");
-    add("cheese");
-    add("tomatoe");
-    add("pineapple");
-    add("mushrooms");
+  static List<String> toppinngs = new ArrayList<String>(){{
+      add("pepperoni");
+      add("cheese");
+      add("tomatoe");
+      add("pineapple");
+      add("mushrooms");
+  }
   };
 
   //Pizza Associations
@@ -32,8 +33,8 @@ public class Pizza
 
   public Pizza(int t)
   {
-    if(t == toppinngs.length){
-      ingredients.addAll(Arrays.asList(toppinngs));
+    if(t == toppinngs.size()){
+      ingredients.addAll(toppinngs);
 
     }else{
       Random rand = new Random();
@@ -42,7 +43,7 @@ public class Pizza
       for (int i = 0; i< t;i++){
         if(!l.contains(n) || l.isEmpty()){
           l.add(n);
-          ingredients.add(toppinngs[n]);
+          ingredients.add(toppinngs.get(n));
         }
         n = rand.nextInt(5);
       }

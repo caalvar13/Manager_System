@@ -7,6 +7,8 @@ import java.util.*;
 // line 177 "model.ump"
 public class Manager extends Employee
 {
+  private String username;
+  private String password;
 
   //------------------------
   // MEMBER VARIABLES
@@ -21,6 +23,8 @@ public class Manager extends Employee
   public Manager(String aName, double aSalary, double aHoursWorked)
   {
     name = aName;
+    username = aName.toLowerCase();
+    password = "test1";
     salary = aSalary;
     hoursWorked = aHoursWorked;
     isManager =true;
@@ -29,6 +33,14 @@ public class Manager extends Employee
   //------------------------
   // INTERFACE
   //------------------------
+
+  public String getUsername(){
+    return username;
+  }
+
+  public String getPassword(){
+    return password;
+  }
 
   private void addEmployee(Object employee, List<Object> employees){
     if(!employees.contains(employee)){
