@@ -18,8 +18,7 @@ public class Order
 
   //Order Associations
   private Store store;
-  private OrderManager orderManager;
-  private List<Pizza> pizzas;
+  private List<Pizza> pizzas = new ArrayList<Pizza>();
 
   //------------------------
   // CONSTRUCTOR

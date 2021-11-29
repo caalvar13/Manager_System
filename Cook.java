@@ -16,23 +16,15 @@ public class Cook extends Employee
   // CONSTRUCTOR
   //------------------------
 
-  public Cook(String aName, double aSalary, Store aStore, EmployeeManager aEmployeeManager)
+  public Cook(String aName, double aSalary, double aHoursWorked)
   {
-    super(aName, aSalary, aStore, aEmployeeManager);
+    name = aName;
+    salary = aSalary;
+    hoursWorked = aHoursWorked;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
-
-  public void delete()
-  {
-    super.delete();
-  }
-
-  // line 118 "model.ump"
-   public void makeOrder(){
-    
-  }
 
 }

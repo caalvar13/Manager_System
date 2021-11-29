@@ -16,23 +16,15 @@ public class Maintenance extends Employee
   // CONSTRUCTOR
   //------------------------
 
-  public Maintenance(String aName, double aSalary, Store aStore, EmployeeManager aEmployeeManager)
+  public Maintenance(String aName, double aSalary, double aHoursWorked)
   {
-    super(aName, aSalary, aStore, aEmployeeManager);
+    name = aName;
+    salary = aSalary;
+    hoursWorked = aHoursWorked;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
-
-  public void delete()
-  {
-    super.delete();
-  }
-
-  // line 107 "model.ump"
-   private void cleanStore(){
-    
-  }
 
 }

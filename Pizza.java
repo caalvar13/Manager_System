@@ -1,3 +1,5 @@
+import java.util.*;
+
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.31.1.5860.78bb27cc6 modeling language!*/
 
@@ -12,12 +14,7 @@ public class Pizza
   // MEMBER VARIABLES
   //------------------------
 
-  //Pizza Attributes
-  private String pepperoni;
-  private String cheese;
-  private String tomatoe;
-  private String pineapple;
-  private String mushrooms;
+  List<String> ingredients = new ArrayList<String>(){};
 
   //Pizza Associations
   private Order order;
@@ -26,88 +23,17 @@ public class Pizza
   // CONSTRUCTOR
   //------------------------
 
-  public Pizza(String aPepperoni, String aCheese, String aTomatoe, String aPineapple, String aMushrooms, Order aOrder)
+  public Pizza()
   {
-    pepperoni = aPepperoni;
-    cheese = aCheese;
-    tomatoe = aTomatoe;
-    pineapple = aPineapple;
-    mushrooms = aMushrooms;
-    boolean didAddOrder = setOrder(aOrder);
-    if (!didAddOrder)
-    {
-      throw new RuntimeException("Unable to create pizza due to order. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
-  }
+    ingredients.add("pepperoni");
+    ingredients.add("cheese");
+    ingredients.add("tomatoe");
+    ingredients.add("pineapple");
+    ingredients.add("mushrooms");
 
   //------------------------
   // INTERFACE
   //------------------------
-
-  public boolean setPepperoni(String aPepperoni)
-  {
-    boolean wasSet = false;
-    pepperoni = aPepperoni;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setCheese(String aCheese)
-  {
-    boolean wasSet = false;
-    cheese = aCheese;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setTomatoe(String aTomatoe)
-  {
-    boolean wasSet = false;
-    tomatoe = aTomatoe;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setPineapple(String aPineapple)
-  {
-    boolean wasSet = false;
-    pineapple = aPineapple;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setMushrooms(String aMushrooms)
-  {
-    boolean wasSet = false;
-    mushrooms = aMushrooms;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public String getPepperoni()
-  {
-    return pepperoni;
-  }
-
-  public String getCheese()
-  {
-    return cheese;
-  }
-
-  public String getTomatoe()
-  {
-    return tomatoe;
-  }
-
-  public String getPineapple()
-  {
-    return pineapple;
-  }
-
-  public String getMushrooms()
-  {
-    return mushrooms;
-  }
   /* Code from template association_GetOne */
   public Order getOrder()
   {
@@ -142,10 +68,17 @@ public class Pizza
       placeholderOrder.removePizza(this);
     }
   }
+  
+   
+  private void addIngredients(String ingredient){
+    ingredients.add(ingredient);
+  }
 
-  // line 132 "model.ump"
-   private void addIngredients(){
-    
+  private void removeIngredients(String ingredient){
+    if(!ingredients.isEmpty() && ingredient.contains(ingredient))
+      ingredients.remove(new String(ingredient));
+    else 
+      System.out.print("No ingredient found to remove");
   }
 
 

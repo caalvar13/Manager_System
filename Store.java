@@ -16,12 +16,15 @@ public class Store
   //Store Attributes
   private String city;
   private String zipCode;
-  private List<Manager> management;
+  private String workHours;
   private String deliveryHours;
   private String deliveryRules;
+  private List<Object> employees = new ArrayList<Object>();
+  private List<Order> order = new ArrayList<Order>();
+  private double revenue;
+  private double cost;
 
   //Store Associations
-  private List<Employee> employees;
   private OrderManager orderManager;
   private List<Order> orders;
 
@@ -29,14 +32,13 @@ public class Store
   // CONSTRUCTOR
   //------------------------
 
-  public Store(String aCity, String aZipCode, String aDeliveryHours, String aDeliveryRules, OrderManager aOrderManager)
+  public Store(String zipcode)
   {
-    city = aCity;
-    zipCode = aZipCode;
-    management = new ArrayList<Manager>();
-    deliveryHours = aDeliveryHours;
-    deliveryRules = aDeliveryRules;
-    employees = new ArrayList<Employee>();
+    city = "El Paso";
+    zipCode = zipcode;
+    deliveryHours = "10-10";
+    deliveryRules = "No more than 5 mile radius";
+    employees();
     boolean didAddOrderManager = setOrderManager(aOrderManager);
     if (!didAddOrderManager)
     {
@@ -49,50 +51,42 @@ public class Store
   // INTERFACE
   //------------------------
 
-  public boolean setCity(String aCity)
-  {
-    boolean wasSet = false;
-    city = aCity;
-    wasSet = true;
-    return wasSet;
+  private void employees(){
+    employees.add(new Manager("Juan", 14.5, 35));
+    employees.add(new Driver("Gabe", 8.5, 34));
+    employees.add(new Maintenance("John", 8.5, 33));
+    employees.add(new Cook("Luis", 8.5, 32));
+    employees.add(new Cashier("Johnny", 8.5, 32));
   }
 
-  public boolean setZipCode(String aZipCode)
+  public void setCity(String aCity)
   {
-    boolean wasSet = false;
+    city = aCity;
+  }
+
+  public void setZipCode(String aZipCode)
+  {
     zipCode = aZipCode;
-    wasSet = true;
-    return wasSet;
   }
   /* Code from template attribute_SetMany */
-  public boolean addManagement(Manager aManagement)
+  public void addManagement(Manager aManagement)
   {
-    boolean wasAdded = false;
-    wasAdded = management.add(aManagement);
-    return wasAdded;
+
   }
 
-  public boolean removeManagement(Manager aManagement)
+  public void removeManagement(Manager aManagement)
   {
-    boolean wasRemoved = false;
-    wasRemoved = management.remove(aManagement);
-    return wasRemoved;
+    
   }
 
-  public boolean setDeliveryHours(String aDeliveryHours)
+  public void setDeliveryHours(String aDeliveryHours)
   {
-    boolean wasSet = false;
     deliveryHours = aDeliveryHours;
-    wasSet = true;
-    return wasSet;
   }
 
-  public boolean setDeliveryRules(String aDeliveryRules)
+  public void setDeliveryRules(String aDeliveryRules)
   {
-    boolean wasSet = false;
     deliveryRules = aDeliveryRules;
-    wasSet = true;
-    return wasSet;
   }
 
   public String getCity()
@@ -105,7 +99,7 @@ public class Store
     return zipCode;
   }
   /* Code from template attribute_GetMany */
-  public Manager getManagement(int index)
+  public Manager getManager(int index)
   {
     Manager aManagement = management.get(index);
     return aManagement;
@@ -215,9 +209,9 @@ public class Store
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Employee addEmployee(String aName, double aSalary, EmployeeManager aEmployeeManager)
+  public Employee addEmployee(String aName, double aSalary, Employee aEmployee)
   {
-    return new Employee(aName, aSalary, this, aEmployeeManager);
+    return new Employee(aName, aSalary, aEmployee);
   }
 
   public boolean addEmployee(Employee aEmployee)
@@ -395,6 +389,10 @@ public class Store
 
   // line 12 "model.ump"
    private void manageCost(){
+     cost = 0;
+     for(Object emp: employees){
+        cost+= emp.hoursWorked * emp.salary;
+     }
     
   }
 

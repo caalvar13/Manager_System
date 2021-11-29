@@ -16,19 +16,17 @@ public class Driver extends Employee
   // CONSTRUCTOR
   //------------------------
 
-  public Driver(String aName, double aSalary, Store aStore, EmployeeManager aEmployeeManager)
+  public Driver(String aName, double aSalary, double aHoursWorked)
   {
-    super(aName, aSalary, aStore, aEmployeeManager);
+    name = aName;
+    salary = aSalary;
+    hoursWorked = aHoursWorked;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
 
-  public void delete()
-  {
-    super.delete();
-  }
 
   // line 92 "model.ump"
    private void deliverOrder(){

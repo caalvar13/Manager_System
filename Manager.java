@@ -16,9 +16,11 @@ public class Manager extends Employee
   // CONSTRUCTOR
   //------------------------
 
-  public Manager(String aName, double aSalary, Store aStore, EmployeeManager aEmployeeManager)
+  public Manager(String aName, double aSalary, double aHoursWorked)
   {
-    super(aName, aSalary, aStore, aEmployeeManager);
+    name = aName;
+    salary = aSalary;
+    hoursWorked = aHoursWorked;
   }
 
   //------------------------

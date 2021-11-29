@@ -16,23 +16,15 @@ public class Cashier extends Employee
   // CONSTRUCTOR
   //------------------------
 
-  public Cashier(String aName, double aSalary, Store aStore, EmployeeManager aEmployeeManager)
+  public Cashier(String aName, double aSalary, double aHoursWorked)
   {
-    super(aName, aSalary, aStore, aEmployeeManager);
+    name = aName;
+    salary = aSalary;
+    hoursWorked = aHoursWorked;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
-
-  public void delete()
-  {
-    super.delete();
-  }
-
-  // line 99 "model.ump"
-   private void processPayment(){
-    
-  }
 
 }
